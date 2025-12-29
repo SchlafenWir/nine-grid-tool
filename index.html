@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九宫格图片切割工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>九宫格图片切割工具</h1>
+            <p>快速将图片切分为九宫格，便于移动端开发</p>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <h3>拖拽图片到此处或点击上传</h3>
+                        <p>支持 PNG、JPG 格式，文件大小限制 10MB</p>
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                            选择图片
+                        </button>
+                        <input type="file" id="fileInput" accept=".png,.jpg,.jpeg" style="display: none;">
+                    </div>
+                </div>
+            </section>
+
+            <section class="processing-section" id="processingSection" style="display: none;">
+                <div class="original-image">
+                    <h3>原始图片</h3>
+                    <div class="image-container">
+                        <img id="originalImage" alt="原始图片">
+                        <div class="grid-overlay">
+                            <div class="grid-line vertical"></div>
+                            <div class="grid-line vertical"></div>
+                            <div class="grid-line horizontal"></div>
+                            <div class="grid-line horizontal"></div>
+                        </div>
+                    </div>
+                    <div class="image-info">
+                        <span id="originalInfo"></span>
+                    </div>
+                </div>
+
+                <div class="split-button-container">
+                    <button class="split-btn" id="splitBtn">开始切割</button>
+                </div>
+
+                <div class="result-section" id="resultSection" style="display: none;">
+                    <h3>切割结果</h3>
+                    <div class="download-options">
+                        <button class="download-all-btn" id="downloadAllBtn">打包下载所有图片</button>
+                    </div>
+                    <div class="grid-container" id="gridContainer">
+                        <!-- 九宫格图片将在这里动态生成 -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>正在处理图片...</p>
+        </div>
+
+        <div class="message-toast" id="messageToast"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
